@@ -1,12 +1,12 @@
-name: Call external API
-on: push
+name: Release
+on: release
 
 jobs:
   send:
-    name: Random
+    name: Send new verison
     runs-on: ubuntu-latest
     steps:
       - name: HTTP client
         uses: swinton/httpie.action@1.0.6
         with:
-          args: POST https://express.morzzz007.now.sh hello=world
+          args: POST https://express.morzzz007.now.sh version=${GITHUB_REF}
