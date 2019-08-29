@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   send: 
-    name: "Send"
-    steps:
-    - uses: swinton/httpie.action@master
-    - args: ["POST", "https://express.morzzz007.now.sh", "hello=world"]
+  - name: HTTP client
+    uses: swinton/httpie.action@1.0.6
+    with:
+      args: ["POST", "https://express.morzzz007.now.sh", "hello=world"]
