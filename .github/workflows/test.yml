@@ -9,4 +9,4 @@ jobs:
       - name: HTTP client
         uses: swinton/httpie.action@1.0.6
         with:
-          args: POST https://express.morzzz007.now.sh version=${GITHUB_REF} action=${GITHUB_ACTION} eventname=${GITHUB_EVENT_NAME}
+          args: POST https://express.morzzz007.now.sh version=${GITHUB_REF} action=${GITHUB_ACTION} event=${{github.event}}
