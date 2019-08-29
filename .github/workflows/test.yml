@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: HTTP client
-        if: ${{github.event.action == published }}
+        if: github.event.action == published
         uses: swinton/httpie.action@1.0.6
         with:
           args: POST https://express.morzzz007.now.sh version=${GITHUB_REF} action=${{github.event.action}}
