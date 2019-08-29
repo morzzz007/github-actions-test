@@ -1,9 +1,11 @@
 name: Call external API
-on: [push]
+on: push
 
 jobs:
-  send: 
-  - name: HTTP client
-    uses: swinton/httpie.action@1.0.6
-    with:
-      args: ["POST", "https://express.morzzz007.now.sh", "hello=world"]
+  send:
+    name: Random
+    steps:
+      - name: HTTP client
+        uses: swinton/httpie.action@1.0.6
+        with:
+          args: ["POST", "https://express.morzzz007.now.sh", "hello=world"]
