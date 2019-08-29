@@ -1,0 +1,9 @@
+name: Call external API
+on: [push]
+
+jobs:
+  send: 
+    name: "Send"
+    steps:
+    - uses: swinton/httpie.action@master
+    - args: ["POST", "https://express.morzzz007.now.sh", "hello=world"]
