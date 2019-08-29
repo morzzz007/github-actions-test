@@ -5,5 +5,5 @@ workflow "Call external API" {
 
 action "Call httpbin" {
   uses = "swinton/httpie.action@master"
-  args = ["POST", "httpbin.org/anything", "hello=world"]
+  args = ["POST", "https://express.morzzz007.now.sh", "hello=world"]
 }
