@@ -4,6 +4,7 @@ on: push
 jobs:
   send:
     name: Random
+    runs-on: ubuntu-latest
     steps:
       - name: HTTP client
         uses: swinton/httpie.action@1.0.6
