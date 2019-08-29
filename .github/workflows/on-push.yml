@@ -1,18 +1,9 @@
-name: CI
-
+name: Call external API
 on: [push]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
+  send: 
+    name: "Send"
     steps:
-      - name: Run a one-line script
-        run: echo Hello world ${SUPER_SECRET}!
-        env:
-          super_secret: ${{ secrets.SuperSecret }}
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+    - uses: swinton/httpie.action@master
+    - args: ["POST", "https://express.morzzz007.now.sh", "hello=world"]
