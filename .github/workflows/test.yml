@@ -5,9 +5,9 @@ jobs:
   send:
     name: Send new verison
     runs-on: ubuntu-latest
+    if: github.event.action == 'published'
     steps:
       - name: HTTP client
-        if: github.event.action == 'published'
         uses: swinton/httpie.action@1.0.6
         with:
           args: POST https://express.morzzz007.now.sh version=${GITHUB_REF} action=${{github.event.action}}
