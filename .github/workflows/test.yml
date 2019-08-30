@@ -12,4 +12,4 @@ jobs:
         env:
           JWT_TOKEN: ${{ secrets.JwtToken }}
         with:
-          args: --auth-type=jwt --auth=${JWT_TOKEN} POST https://express.morzzz007.now.sh version=${GITHUB_REF} action=${{github.event.action}}
+          args: --auth-type=hmac --auth=":${JWT_TOKEN}" POST https://express.morzzz007.now.sh version=${GITHUB_REF} action=${{github.event.action}}
