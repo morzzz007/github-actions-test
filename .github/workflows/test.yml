@@ -6,12 +6,10 @@ jobs:
     name: Send new verison
     runs-on: ubuntu-latest
     steps:
-      - id: check_published
-        name: Abort if action is not published
-        uses: actions/checkout@master
-        if: github.event.action == 'published'
       - name: HTTP client
-        if: success()
+        if: github.event.action == 'published'
         uses: swinton/httpie.action@1.0.6
+        env:
+          JWT_TOKEN: ${{ secrets.JwtToken }}
         with:
-          args: POST https://express.morzzz007.now.sh version=${GITHUB_REF} action=${{github.event.action}}
+          args: --auth-type=jwt --auth=${JWT_TOKEN} POST https://express.morzzz007.now.sh version=${GITHUB_REF} action=${{github.event.action}}
