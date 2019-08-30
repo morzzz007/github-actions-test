@@ -8,8 +8,6 @@ jobs:
     steps:
       - name: HTTP client
         if: github.event.action == 'published'
-        uses: swinton/httpie.action@1.0.6
+        run: curl -X POST -H "Authorization: ${ JWT_TOKEN }" -H "Content-Type: application/json" --data '{"action":"${{github.event.action}}", "version":"${GITHUB_REF}"}' https://express.morzzz007.now.sh
         env:
           JWT_TOKEN: ${{ secrets.JwtToken }}
-        with:
-          args: --auth-type=hmac --auth=":${JWT_TOKEN}" POST https://express.morzzz007.now.sh version=${GITHUB_REF} action=${{github.event.action}}
