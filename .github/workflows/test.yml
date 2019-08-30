@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: check_published
-        shell: bash
         name: Abort if action is not published
+        uses: actions/checkout@master
         if: github.event.action == 'published'
       - name: HTTP client
         if: success()
