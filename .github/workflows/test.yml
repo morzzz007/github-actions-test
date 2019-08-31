@@ -1,15 +1,16 @@
 name: Release
-on: release
+on: [push]
 
 jobs:
   send:
     name: Send new verison
     runs-on: ubuntu-latest
     steps:
-      - name: My first step
-        run: echo "Will this run?"
-      - name: HTTP client
-        if: github.event.action == 'published'
-        run: curl -X POST -H "Authorization:${JWT_TOKEN}" -H "Content-Type:application/json" --data '{"action":"${{github.event.action}}", "version":"${{github.event.release.tag_name}}"}' https://express.morzzz007.now.sh
-        env:
-          JWT_TOKEN: ${{ secrets.JwtToken }}
+      - name: JWT Generator
+        id: jwtGenerator
+        uses: morzzz007/github-actions-jwt-generator@0.0.9
+        with:
+          secret: topsecret
+          payload: {"alma":"korte"}
+      - name: DUMP Token
+        run: echo ${{steps.jwtGenerator.outputs.jwtToken}}
