@@ -11,6 +11,6 @@ jobs:
         uses: morzzz007/github-actions-jwt-generator@0.0.9
         with:
           secret: topsecret
-          payload: {"alma":"korte"}
+          payload: '{"alma":"korte"}'
       - name: DUMP Token
         run: echo ${{steps.jwtGenerator.outputs.jwtToken}}
