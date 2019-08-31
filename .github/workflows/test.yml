@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: JWT Generator
         id: jwtGenerator
-        uses: morzzz007/github-actions-jwt-generator@0.0.9
+        uses: morzzz007/github-actions-jwt-generator@latest
         with:
           secret: topsecret
           payload: '{"alma":"korte"}'
